@@ -11,11 +11,7 @@ pool:
 
 variables:
   buildConfiguration: 'Release'
-
-#- script: dotnet build --configuration $(buildConfiguration)
-#  displayName: 'dotnet build $(buildConfiguration)'
-
-  inputs:
-    command: test
-    projects: '**/*Tests/*.csproj'
-    arguments: '--configuration $(buildConfiguration) --collect "Code coverage"'
+    - task: DotNetCoreCLI@2
+      inputs:
+        command: 'build'
+        projects: 'configuration $(buildConfiguration)'
